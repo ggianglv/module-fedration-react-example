@@ -33,9 +33,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin(
       {
-        name: 'main-app',
+        name: 'remote_app',
         filename: 'remoteEntry.js',
-        exposes: {},
+        remotes: {
+          remote_app: 'remote_app@http://localhost:3003/remoteEntry.js',
+        },
       },
     ),
     new HtmlWebpackPlugin({
